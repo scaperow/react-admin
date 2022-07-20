@@ -24,6 +24,7 @@ import {
 export const SimpleFormIteratorItem = React.forwardRef(
     (props: SimpleFormIteratorItemProps, ref: any) => {
         const {
+            fields,
             children,
             disabled,
             disableReordering,
@@ -117,7 +118,7 @@ export const SimpleFormIteratorItem = React.forwardRef(
                             }
                         )}
                     </section>
-                    {!disabled && !disableRemoveField(record) && (
+                    {!disabled && !disableRemoveField(fields[index]) && (
                         <span className={SimpleFormIteratorClasses.action}>
                             {cloneElement(removeButton, {
                                 onClick: handleRemoveButtonClick(
@@ -137,7 +138,7 @@ export const SimpleFormIteratorItem = React.forwardRef(
     }
 );
 
-export type DisableRemoveFunction = (record: RaRecord) => boolean;
+export type DisableRemoveFunction = (field: FieldArrayWithId<TFieldValues, TFieldArrayName, TKeyName>) => boolean;
 
 export type SimpleFormIteratorItemProps = Partial<ArrayInputContextValue> & {
     children?: ReactNode;

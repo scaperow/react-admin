@@ -118,7 +118,7 @@ export const SimpleFormIteratorItem = React.forwardRef(
                             }
                         )}
                     </section>
-                    {!disabled && !disableRemoveField(fields[index]) && (
+                    {!disabled && !disableRemoveField(record, index) && (
                         <span className={SimpleFormIteratorClasses.action}>
                             {cloneElement(removeButton, {
                                 onClick: handleRemoveButtonClick(
